@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeoLocation</title>
+  </head>
+  <body>
+    <script>
+      /*
+        GeoLocation
+
+        - Test for GeoLocation support
+        - If the navigator object exists within the users browser then geolocation is supported
+      */
+      if ("geolocation" in navigator) {
+        var options = {
+          enableHighAccuracy: true,
+          maximumAge        : 30000,
+          timeout           : 27000
+        }
+
+        this.getPosition();
+        // this.watchPosition();
+
+      } else {
+        alert('geolocation IS NOT supported in your current browser version');
+      }
+
+      function getPosition() {
+        // geolocation is available
+        // pass current position object to processPosition function
+        // error handler and options are optional
+        navigator.geolocation.getCurrentPosition( ( position ) => this.processPosition( position ), geoErrorHandler, options );
+      }
+
+      function watchPosition() {
+        // geolocation is available
+        // gets the users position then continues to watch for changes in the data
+        // each time a change in detected pass current position object to processPosition function
+        // error handler and options are optional
+        navigator.geolocation.watchPosition( ( position ) => this.processPosition( position ), geoErrorHandler, options );
+      }
+
+      function processPosition( position ) {
+
+        /*
+          - available position object properties:
+            -- altitude
+            -- altitudeAccuracy
+            -- heading
+            -- latitude
+            -- longitude
+            -- speed
+        */
+        console.log( position );
+        console.log( 'Latitude: ' + position.coords.latitude );
+        console.log( 'Longitude: ' + position.coords.longitude );
+
+        const location = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+
+        this.getISSPassTimes( location )
+      }
+
+      function geoErrorHandler() {
+        alert('Position unavilable');
+      }
+
+      function getISSPassTimes( { latitude, longitude } = location )
+      {
+        console.log( 'ISS pass times for: ' + latitude + ' ' + longitude )
+        let url = `http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`;
+
+        fetch( url )
+        .then(response => console.log(response))
+      }
+
+    </script>
+  </body>
+</html>
