@@ -1,0 +1,28 @@
+<script>
+
+  /*
+    array.from
+    - converts an 'Array like' object i.e. NodeList into an Array
+  */
+  const people = Array.from( document.querySelectorAll('.people p') ); // document.querySelectorAll('.people p') is an Array like object
+  const names = people.map( person => person.textContent );
+  names.forEach( (name) => document.querySelector('.people ul').innerHTML += `<li>${name}</li>`);
+
+  /*
+    Array.of
+    - Creates an Array containing ALL of the arguments passed to it
+  */
+  const family = Array.of('Barry', 'Laura', 'Benjamin', 'Matthew', 'Baby');
+  console.log(family); // ["Barry", "Laura", "Benjamin", "Matthew", "Baby"]
+
+</script>
+
+
+<div class="people">
+  <p>Barry</p>
+  <p>Laura</p>
+  <p>Benjamin</p>
+  <p>Matthew</p>
+  <p>Baby</p>
+  <ul></ul>
+</div>
