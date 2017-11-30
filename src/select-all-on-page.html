@@ -1,0 +1,37 @@
+<ul>
+  <li data-time="12:00">Ontime</li>
+  <li data-time="12:57">Delayed</li>
+  <li data-time="13:33">Ontime</li>
+  <li data-time="15:52">Ontime</li>
+  <li data-time="16:30">Delayed</li>
+</ul>
+
+<script>
+
+  // select all list items with the attribute [data-time] - Returns a nodeList
+  const items = document.querySelectorAll('[data-time]');
+  console.log(items);
+
+  // select all list items with the attribute [data-time] - Returns an Array
+  const arrayOfItems = Array.from(document.querySelectorAll('[data-time]'));
+  console.log(arrayOfItems);
+
+  // filter results to include only items containing the word Ontime
+  // use map to get the value of the [data-time] attribute for each item
+  // use map to get an array of seconds
+  // split the hours:mins string
+  // convert the string parts to numbers
+  // return total number of seconds for each item
+  // calculate the total number of seconds using reduce
+  const filtered = arrayOfItems.filter( item => item.textContent.includes('Ontime'))
+                               .map( item => item.dataset.time )
+                               .map( timecode => {
+                                 const parts = timecode.split(':')
+                                                       .map( part => parseFloat( part ));
+                                 return ( parts[0] * 60 + parts[1]);
+                               });
+
+  const total = filtered.reduce( (runningTotal, seconds) => runningTotal + seconds, 0 );
+  console.log(total);
+
+</script>
