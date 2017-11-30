@@ -11,3 +11,4 @@
 * Spread Operator
 * Rest Operator
 * Strings
+* Generators
