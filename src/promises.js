@@ -8,7 +8,7 @@
 // const dataPromise = fetch('http://api.open-notify.org/iss-pass.json?lat=54.9513834&lon=-1.5359112');
 //
 // dataPromise.then( data => data.json() )
-//            .then( data=> { console.log( data ) } )
+//            .then( data => { console.log( data ) } )
 //            .catch( error => { console.error( error ) } );
 
 
