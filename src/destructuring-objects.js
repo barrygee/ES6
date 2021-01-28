@@ -4,7 +4,7 @@ const person = {
   age: '36',
   location: 'Gateshead',
   social: {
-    twitter: '@barrygee',
+    twitter: '@barrymarkgee',
     linkedin: 'https://www.linkedin.com/in/barrymarkgee/'
   }
 }
