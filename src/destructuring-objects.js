@@ -5,7 +5,7 @@ const person = {
   location: 'Gateshead',
   social: {
     twitter: '@barrygee',
-    linkedin: 'https://www.linkedin.com/in/barry-gee-31956a146/'
+    linkedin: 'https://www.linkedin.com/in/barrymarkgee/'
   }
 }
 
