@@ -1,4 +1,4 @@
-# ES6 Fundamentals
+# JavaScript (ES6) Fundamentals
 * Arrays
 * Destructuring
 * Filters
